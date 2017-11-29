@@ -7,7 +7,6 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import android.accessibilityservice.AccessibilityService;
 import android.app.Activity;
 import android.graphics.Color;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,14 +27,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class MainActivity extends Activity {
-    private final LatLng SAN_FRAN = new LatLng(37.77564, -122.38674);
     private MapboxMap mMapboxMap;
     private MapView mMapView;
-    private Spinner spinner;
-    private static final String[] paths = {"Babysitter", "Mechanic", "Carpenter", "Plumber", "Gardener", "Tailor", "Maid", "Tutor"};
     private Button online;
     public boolean status = false;
-    private AccessibilityService mAppContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +38,6 @@ public class MainActivity extends Activity {
         MapQuestAccountManager.start(getApplicationContext());
         setContentView(R.layout.activity_main);
         online = (Button) findViewById(R.id.btn1);
-        spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item, paths);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-
         mMapView = (MapView) findViewById(R.id.mapquestMapView);
         mMapView.onCreate(savedInstanceState);
 
@@ -58,8 +45,6 @@ public class MainActivity extends Activity {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 mMapboxMap = mapboxMap;
-                mMapboxMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SAN_FRAN, 11));
-                addMarker("San Francisco", "Welcome to San Fran!", SAN_FRAN);
             }
         });
     }
