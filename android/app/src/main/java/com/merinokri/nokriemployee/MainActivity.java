@@ -6,17 +6,14 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import android.accessibilityservice.AccessibilityService;
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
+import android.location.LocationListener;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mapquest.mapping.MapQuestAccountManager;
 import com.mapquest.mapping.maps.OnMapReadyCallback;
@@ -24,25 +21,11 @@ import com.mapquest.mapping.maps.MapboxMap;
 import com.mapquest.mapping.maps.MapView;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import static android.R.attr.button;
-import static android.net.sip.SipErrorCode.TIME_OUT;
-import static java.security.spec.RSAKeyGenParameterSpec.F0;
 
 public class MainActivity extends Activity {
     private final LatLng SAN_FRAN = new LatLng(37.77564, -122.38674);
@@ -52,7 +35,6 @@ public class MainActivity extends Activity {
     private static final String[] paths = {"Babysitter", "Mechanic", "Carpenter", "Plumber", "Gardener", "Tailor", "Maid", "Tutor"};
     private Button online;
     public boolean status = false;
-    private String MAKE_AVAILABLE_URI = "https://us-central1-mitrabajo-us.cloudfunctions.net/makeAvailable?phone=%s&location=%s";
     private AccessibilityService mAppContext;
 
     @Override
@@ -77,17 +59,21 @@ public class MainActivity extends Activity {
             public void onMapReady(MapboxMap mapboxMap) {
                 mMapboxMap = mapboxMap;
                 mMapboxMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SAN_FRAN, 11));
-                addMarker(mMapboxMap);
+                addMarker("San Francisco", "Welcome to San Fran!", SAN_FRAN);
             }
         });
     }
 
-    private void addMarker(MapboxMap mapboxMap) {
+    private void updateMap(final LatLng latlng) {
+        mMapboxMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 11));
+    }
+
+    private void addMarker(final String title, final String snippet, final LatLng latlng) {
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SAN_FRAN);
-        markerOptions.title("San Francisco");
-        markerOptions.snippet("Welcome to San Fran!");
-        mapboxMap.addMarker(markerOptions);
+        markerOptions.position(latlng);
+        markerOptions.title(title);
+        markerOptions.snippet(snippet);
+        this.mMapboxMap.addMarker(markerOptions);
     }
 
     @Override
@@ -124,40 +110,34 @@ public class MainActivity extends Activity {
             online.setText("Go Offline");
             status = true;
             online.setBackgroundColor(Color.GREEN);
-           // TelephonyManager mTelephonyMgr;
-           // mTelephonyMgr = (TelephonyManager)
-           //         getSystemService(Context.TELEPHONY_SERVICE);
-          //  String mPhoneNumber = mTelephonyMgr.getLine1Number();
-            clt("https://us-central1-mitrabajo-us.cloudfunctions.net/makeAvailable?phone=14082197539&location=37.77564,-122.38674");
+            showSearchResults("Food Pantry", "94066");
         }
 
     }
 
-    public void clt(final String url_str) {
+    public void showSearchResults(final String category, final String zipcode) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int count = 0;
+                JSONArray searchResults = Search.GetResultsAsJSON(category,zipcode);
                 try {
-                    URL url = new URL(url_str);
-                    URLConnection conection = url.openConnection();
-                    conection.setConnectTimeout(180);
-                    conection.connect();
-                    int lenghtOfFile = conection.getContentLength();
-                    InputStream input = new BufferedInputStream(url.openStream(), 8192);
-                    byte data[] = new byte[1024];
-                    long total = 0;
-                    while ((count = input.read(data)) != -1) {
-                        total += count;
+                    for (int i = 0; i < searchResults.length(); i++) {
+                        JSONObject o = searchResults.getJSONObject(i);
+                        final LatLng latlng = new LatLng(o.getDouble("latitude"), o.getDouble("longitude"));
+                        Log.d("latlng", latlng.toString());
+                        final String title = (String) o.get("name");
+                        Log.d("title", title);
+                        final String description = (String) o.get("description");
+                        Log.d("description", description);
+                        if (i == 1) {
+                            updateMap(latlng);
+                        }
+                        addMarker(title, description, latlng);
                     }
-                    input.close();
-                } catch (SocketTimeoutException e) {
-                    Log.e("Error 1: ", e.toString());
-                } catch (Exception e) {
-                    Log.e("Error 2: ", e.toString());
+                } catch (JSONException ex) {
+                    Log.e("Search.GetResults", ex.toString());
                 }
             }
         }).start();
     }
-
 }
