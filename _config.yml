@@ -1,2 +1,5 @@
 theme: jekyll-theme-slate
-show_downloads: true
+show_downloads: false
+
+title: get-connected
+description: get connected with nearby government and private organizations providing food, shelter and health aid services.
