@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">NokriEmployee</string>
+    <string name="app_name">GetConnected</string>
+
+    <!--<string name="helping_hands">HelpingHands</string>>-->
+
+
+
+
+
+        <string-array name="planets_array">
+            <item>1. Helping Hands \n
+
+        415-000-0000\n
+        9AM - 4PM Mon - Thur\n
+        100 Columbus Ave
+        San Francisco, CA 94000</item>
+            <item>2. Second Harvest Food Bank\n
+                of Santa Clara and San Mateo counties </item>
+            <item>3. Catholic Charities</item>
+            <item>4. Family Giving Tree</item>
+            <item>5. Dress for Success</item>
+            <item>6. Rahima Foundation</item>
+            <item>7. Charities Housing</item>
+            <item>8. Bay Area Kids Charity</item>
+        </string-array>
+
+
+
+
 </resources>
