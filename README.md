@@ -15,8 +15,8 @@
 https://youtu.be/NrzcPzxwtQ0
 
 ## Team
-[Shajia] (https://www.linkedin.com/in/abidishajia/)
-[Anum] (https://www.linkedin.com/in/anumzm/)
-[Sara] (https://www.linkedin.com/in/sara-abidi-917b067/)
-[Hani] (https://www.linkedin.com/in/habidi/)
-[Saad] (https://www.linkedin.com/in/saadmir/)
+  - [Shajia] (https://www.linkedin.com/in/abidishajia/)
+  - [Anum] (https://www.linkedin.com/in/anumzm/)
+  - [Sara] (https://www.linkedin.com/in/sara-abidi-917b067/)
+  - [Hani] (https://www.linkedin.com/in/habidi/)
+  - [Saad] (https://www.linkedin.com/in/saadmir/)
