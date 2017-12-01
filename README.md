@@ -12,7 +12,8 @@
   - android
   
 ## Demo
-https://youtu.be/NrzcPzxwtQ0
+  - [Video](https://youtu.be/NrzcPzxwtQ0)
+  - [Download App](https://github.com/saadmir/get-connected/raw/master/get-connected.apk)
 
 ## Team
   - [Shajia](https://www.linkedin.com/in/abidishajia/)
