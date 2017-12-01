@@ -10,8 +10,8 @@
 
     <RelativeLayout
         android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_weight="2">
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
 
         <ImageView
             android:id="@+id/logo"
@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/client"
             android:layout_marginStart="29dp"
             android:layout_marginTop="11dp"
             android:paddingVertical="1dp"
@@ -34,61 +33,31 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/client"
-            android:layout_width="170dp"
-            android:layout_height="25dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginStart="15dp"
-            android:background="#FFC200"
-            android:text="Client" />
-
-        <Button
-            android:id="@+id/donor_volunteer"
-            android:layout_width="170dp"
-            android:layout_height="25dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginStart="195dp"
-            android:background="#FCC200"
-            android:text="Donor / Volunteer" />
-
-        <TextView
-            android:id="@+id/directions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/client"
-            android:layout_centerHorizontal="true"
-            android:paddingBottom="50dp"
-            android:text="Select all applicable services and click search"
-            android:textStyle="italic" />
-
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="310dp"
         android:paddingTop="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="210dp"
+            android:layout_height="310dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="410dp"
                 android:layout_weight="0.25"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/food"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/groceries"
                     android:onClick= "getFood"
@@ -105,7 +74,7 @@
                 <ImageButton
                     android:id="@+id/toilet"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitCenter"
                     android:onClick= "getFood"
@@ -123,19 +92,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="410dp"
                 android:layout_weight="0.25"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/shelter"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/bed"
                     android:onClick= "getFood"
                     android:tag="shelter" />
-                    />
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -148,13 +117,13 @@
                 <ImageButton
                     android:id="@+id/shower"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/shower"
                     android:onClick= "getFood"
                     android:tag="shower" />
-                    />
+                />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,19 +136,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="410dp"
                 android:layout_weight="0.25"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/health"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/hospital"
                     android:onClick= "getFood"
                     android:tag="health" />
-                    />
+                />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -192,13 +161,13 @@
                 <ImageButton
                     android:id="@+id/laundry"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/laundry"
                     android:onClick= "getFood"
                     android:tag="laundry" />
-                    />
+                />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -211,19 +180,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="410dp"
                 android:layout_weight="0.25"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/clothes"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/sweater"
                     android:onClick= "getFood"
                     android:tag="clothes" />
-                    />
+                />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -236,13 +205,13 @@
                 <ImageButton
                     android:id="@+id/career"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="150dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/books"
                     android:onClick= "getFood"
                     android:tag="career" />
-                    />
+                />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -255,16 +224,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/search"
-        android:layout_width="300dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="80dp"
-        android:layout_weight="1"
-        android:background="#FFC200"
-        android:textSize="18dp"
-        android:text="Search Nearby Services" />
 
 </LinearLayout>

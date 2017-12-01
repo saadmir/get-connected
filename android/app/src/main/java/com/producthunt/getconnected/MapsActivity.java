@@ -9,7 +9,9 @@ import android.util.Log;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.view.ViewGroup.LayoutParams;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -92,7 +94,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ListView listView = (ListView) findViewById(R.id.listView);
     listView.setAdapter(adapter);
 
-    this.mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(infos.get(0).latlng, 12));
+//      LayoutParams list = (LayoutParams) listView.getLayoutParams();
+//      list.height = 300;
+//      listView.setLayoutParams(list);
+
+      this.mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(infos.get(0).latlng, 12));
     for (int i = 0; i < infos.size(); i++) {
       addMarker(infos.get(i));
       adapter.add(infos.get(i));

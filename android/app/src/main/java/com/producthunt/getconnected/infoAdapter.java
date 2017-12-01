@@ -31,13 +31,13 @@ public class infoAdapter extends ArrayAdapter<Info> {
         TextView orgName = (TextView) convertView.findViewById(R.id.nameTextViewID);
         TextView orgAddress = (TextView) convertView.findViewById(R.id.infoTextViewID);
         TextView orgPhone = (TextView) convertView.findViewById(R.id.phoneID);
-        ImageView orgImage = (ImageView) convertView.findViewById(R.id.imageView1ID);
+        //ImageView orgImage = (ImageView) convertView.findViewById(R.id.imageView1ID);
 
         // Populate the data into the template view using the data object
         orgName.setText(user.orgName);
         orgAddress.setText(user.orgAddress);
         orgPhone.setText(user.orgNumber);
-        orgImage.setImageResource(user.orgLogo);
+        //orgImage.setImageResource(user.orgLogo);
 
 
         // Return the completed view to render on screen
