@@ -13,7 +13,7 @@
   
 ### Demo
   - [Video](https://youtu.be/NrzcPzxwtQ0)
-  - [Download App](https://github.com/saadmir/get-connected/raw/master/get-connected.apk)
+  - [Download App](https://github.com/saadmir/get-connected/releases)
 
 ### Team
   - [Shajia](https://www.linkedin.com/in/abidishajia/)
